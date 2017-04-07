@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>Submitted Information</h2>
+
+        <h3>Here are all the users:</h3>
+          <% for (var i = 0; i < users.length; i++) { %>
+              <h5>Name: <%= users[i].name %></h5>
+              <h5>Location: <%= users[i].location %></h5>
+              <h5>Favorite Language: <%= users[i].language %></h5>
+              <h5>Comments: <%= users[i].comments %></h5>
+              <hr>
+          <% } %>
+
+          <form action="/test" method="get">
+            <button type="submit" name="back">Go Back</button>
+          </form>
+  </body>
+</html>
