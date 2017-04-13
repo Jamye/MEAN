@@ -3,12 +3,49 @@
   <head>
     <meta charset="utf-8">
     <title>Angular Page</title>
-    <script src = "http://bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular/angular.js" charset="utf-8"></script>
     <script type="text/javascript">
+      var myAppMod = angular.module('myApp', []);
 
+      //the .controller() method adds a controller to the module
+      myAppMod.controller('userController', function($scope){
+        $scope.users = [
+          {name:"James", email:"gunk@gmail.com", food:"Sushi"},
+          {name:"Penelo", email:"run@yahoo.com", food:"Meat"},
+          {name:"Chloe", email:"bark@gmail.com", food:"Bread"},
+          {name:"Friss", email:"shiny@hotmail.com", food:"Hot Peppers"}
+        ];
+
+        $scope.addUser = function(){
+          console.log(newUser);
+          $scope.users.push($scope.newUser);
+          $scope.newUser = {};
+        }
+
+      });
     </script>
   </head>
   <body>
+    <div ng-controller="userController">
+      <ul>
+        <li ng-repeat="u in users">
+          Name: <span ng-bind="u.name"></span>
+          Email: <span ng-bind="u.email"></span>
+          Favorite Food: <span ng-bind="u.food"></span>
+        </li>
+      </ul>
+    </div>
+    <h4>Add a new User!</h4>
+      <form>
+        Full name: <input type="text" ng-model="newUser.name">
+        Email: <input type="text" ng-model="newUser.email">
+        Favorite Food: <input type="text" ng-model="newUser.food">
+        <!-- <input type="submit" value="Add new user" ng-click="addUser()"> -->
+        <input type='submit' value='add new user' ng-click='addUser()'>
+      </form>
+    <div>
+
+    </div>
 
   </body>
 </html>
