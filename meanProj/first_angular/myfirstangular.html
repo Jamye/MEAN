@@ -21,9 +21,9 @@
           $scope.newUser = {};
         }
 
-        $scope.deleteUser = function(userToDelete){
+        $scope.deleteUser = function(deleteUser){
           $scope.users = $scope.users.filter( function(userObj){
-            return userObj !== userToDelete;
+            return userObj !== deleteUser;
           })
         }
 
@@ -34,18 +34,11 @@
     <div ng-controller="userController">
       <h4>Add a new User!</h4>
       <form>
-        Full name: <input type="text" ng-model="newUser.name">
+        Name: <input type="text" ng-model="newUser.name">
         Email: <input type="text" ng-model="newUser.email">
         Favorite Food: <input type="text" ng-model="newUser.food">
         <input type='submit' value='add new user' ng-click='addUser()'>
       </form>
-      <ul>
-        <li ng-repeat="u in users">
-          Name: <span ng-bind="u.name"></span>
-          Email: <span ng-bind="u.email"></span>
-          Favorite Food: <span ng-bind="u.food"></span>
-        </li>
-      </ul>
       <ul>
       <li ng-repeat='userObj in users'>
         Name: <span ng-bind="userObj.name"></span>
@@ -54,6 +47,13 @@
         <button ng-click='deleteUser(userObj)'>Delete</button>
       </li>
       <ul>
+        <!-- <ul>
+        <li ng-repeat="u in users">
+        Name: <span ng-bind="u.name"></span>
+        Email: <span ng-bind="u.email"></span>
+        Favorite Food: <span ng-bind="u.food"></span>
+      </li>
+    </ul> -->
 
     </div>
 
