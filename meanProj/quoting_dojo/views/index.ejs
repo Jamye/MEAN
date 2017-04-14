@@ -5,12 +5,18 @@
     <title></title>
   </head>
   <body>
+    <% if(typeof(errors) != 'undefined' ) { %>
+        <% for (var x in errors) { %>
+         <h3><%= errors[x].message %></h3>
+        <% } %>
+    <% } %>
+
     <h4>Welcome to QuotingDojo
       <form class="" action="/process" method="post">
         <p>Your Name: <input type="text" name="name" value=""></p>
         <p>Your Quote: <textarea type="text" name="quote" rows="4" cols="20"></textarea></p>
         <button type="submit">Add my quote!</button>
-        <button type="button" action="/quotes" >Skip to quotes!</button>
+        <input type="button" onclick="location.href='/quotes';" value="Skip to Quotes" />
       </form>
   </body>
 </html>

@@ -37,7 +37,7 @@ app.post('/process', function(req, res){
   user.save(function(error){
     if(error) {
       console.log('Something went wrong');
-      res.render('index', "Something went wrong")
+      res.render('index', {title: 'you have errors!', errors: user.errors})
     } else {
       console.log('Successfully added quote!');
       res.redirect('/quotes')
