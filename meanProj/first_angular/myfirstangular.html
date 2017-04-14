@@ -21,12 +21,17 @@
           $scope.newUser = {};
         }
 
+        $scope.deleteUser = function(userToDelete){
+          $scope.users = $scope.users.filter( function(userObj){
+            return userObj !== userToDelete;
+          })
+        }
+
       });
     </script>
   </head>
   <body>
     <div ng-controller="userController">
-
       <h4>Add a new User!</h4>
       <form>
         Full name: <input type="text" ng-model="newUser.name">
@@ -41,6 +46,15 @@
           Favorite Food: <span ng-bind="u.food"></span>
         </li>
       </ul>
+      <ul>
+      <li ng-repeat='userObj in users'>
+        Name: <span ng-bind="userObj.name"></span>
+        Email: <span ng-bind="userObj.email"></span>
+        Favorite Food: <span ng-bind="userObj.food"></span>
+        <button ng-click='deleteUser(userObj)'>Delete</button>
+      </li>
+      <ul>
+
     </div>
 
   </body>
