@@ -17,7 +17,6 @@
         ];
 
         $scope.addUser = function(){
-          console.log(newUser);
           $scope.users.push($scope.newUser);
           $scope.newUser = {};
         }
@@ -27,6 +26,14 @@
   </head>
   <body>
     <div ng-controller="userController">
+
+      <h4>Add a new User!</h4>
+      <form>
+        Full name: <input type="text" ng-model="newUser.name">
+        Email: <input type="text" ng-model="newUser.email">
+        Favorite Food: <input type="text" ng-model="newUser.food">
+        <input type='submit' value='add new user' ng-click='addUser()'>
+      </form>
       <ul>
         <li ng-repeat="u in users">
           Name: <span ng-bind="u.name"></span>
@@ -34,17 +41,6 @@
           Favorite Food: <span ng-bind="u.food"></span>
         </li>
       </ul>
-    </div>
-    <h4>Add a new User!</h4>
-      <form>
-        Full name: <input type="text" ng-model="newUser.name">
-        Email: <input type="text" ng-model="newUser.email">
-        Favorite Food: <input type="text" ng-model="newUser.food">
-        <!-- <input type="submit" value="Add new user" ng-click="addUser()"> -->
-        <input type='submit' value='add new user' ng-click='addUser()'>
-      </form>
-    <div>
-
     </div>
 
   </body>
