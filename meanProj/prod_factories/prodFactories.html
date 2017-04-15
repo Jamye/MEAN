@@ -24,12 +24,16 @@
           //pass the users array of objects into the callback to be used by whoever calls the method
           callback(users)
         }
+        //returns the object so that it can be used by the rest of our angular code
         return factory;
       });
 
+      //create a controller (attached to this module) and injects userFactory into it
       myAppMod.controller("userController", ["$scope", "userFactory", function($scope, userFactory){
+        //initialize an empty array so $scope.users maintains a consistent data type
         $scope.users = [];
 
+        //runs the getUsers method and sets the $scope data in the callback
         userFactory.getUsers = function (data){
           $scope.users = data;
         }
