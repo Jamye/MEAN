@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app ="myApp">
+  <head>
+    <meta charset="utf-8">
+    <script src='bower_components/angular/angular.js'></script>
+    <script type="text/javascript">
+
+    //create a module
+      var myAppMod = angular.module("myApp", []);
+
+    //create a factory (attached to this module)
+      myAppMod.factory("userFactory", function(){
+        var factory = {};
+
+      // the factory is nothing more than a function that returns an object
+        var users = [
+          {name: "James", email: "blah@gmail.com"},
+          {name: "Chloe", email: "bark@gmail.com"},
+          {name: "Penelo", email: "run@gmail.com"},
+        ];
+
+      //add a getUsers key to the factory object with a value of a function
+        factory.getUsers = function (callback){
+          //pass the users array of objects into the callback to be used by whoever calls the method
+          callback(users)
+        }
+        return factory;
+      });
+
+      myAppMod.controller("userController", ["$scope", "userFactory", function($scope, userFactory){
+        $scope.users = [];
+
+        userFactory.getUsers = function (data){
+          $scope.users = data;
+        }
+      }])
+    </script>
+    <title>
+    </title>
+  </head>
+  <body>
+
+  </body>
+</html>
