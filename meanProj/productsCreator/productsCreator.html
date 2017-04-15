@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app ="myProdApp">
+  <head>
+    <meta charset="utf-8">
+    <script src='bower_components/angular/angular.js' charset="utf-8"></script>
+    <script type="text/javascript">
+
+    var myAppMod = angular.module("myProdApp", []);
+
+    myAppMod.factory("productsFactory", function(){
+      var factory = {}
+
+      var products = [
+        {name: "iPhone", price: 600},
+        {name: "Basketball", price: 50},
+      ];
+
+      factory.getProducts = function (callback){
+        callback(products)
+      }
+      return factory
+
+
+      factory.addProd = function(form){
+        $scope.products.push($scope.newProd);
+      }
+
+    })
+
+    myAppMod.controller("productController",["$scope","productsFactory" ,function($scope){
+      $scope.products = []
+
+      productsFactory.getProducts = function (data){
+        $scope.products = data;
+      }
+
+      productsFactory.addProd = function (formdata){
+        $scope.newProd = {};
+      }
+
+
+    }]);
+
+    </script>
+    <title></title>
+  </head>
+  <body>
+    <div ng-controller="productController">
+      <h5>Products Controller</h5>
+      <form>
+        Product Name: <input type="text" ng-model="newProd.name">
+        Product Price: <input type="text" ng-model="newProd.price">
+        <input type="submit" value="Add New Product" ng-click="addProd()">
+
+      </form>
+    </div>
+  </body>
+</html>
