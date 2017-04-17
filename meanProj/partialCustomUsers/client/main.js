@@ -51,7 +51,7 @@ app.factory("userFactory", [function (){
 app.controller("customizeUsersController", ["$scope", "userFactory", function($scope, userFactory){
   function setUsers(data){
     $scope.users = data;
-    @scope.newUser = {};
+    $scope.newUser = {};
   }
 
   @scope.users = [];
@@ -75,5 +75,6 @@ app.controller("customizeUsersController", ["$scope", "userFactory", function($s
 
   //when this controller is loaded, fetch the user list
   userFactory.index(setUsers);
+
 
 }])
