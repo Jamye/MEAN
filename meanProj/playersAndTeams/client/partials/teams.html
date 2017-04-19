@@ -1,0 +1,22 @@
+<h3>This is the Teams Page!</h3>
+
+<form ng-submit="addTeam()">
+  <div class="form-group">
+    <label for="newteam">Team Name: </label>
+    <input type="text" name="newteam" ng-model="newTeam.name" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Add new team</button>
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <th>Name</th>
+    <th>Actions </th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="t in teams">
+      <td ng-bind="t.name "></td>
+      <td><button class="btn btn-danger" ng-click="removeTeam(t)">Remove Team</button></td>
+    </tr>
+  </tbody>
+</table>

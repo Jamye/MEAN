@@ -1,0 +1,28 @@
+<h3>Associations Page</h3>
+
+<form ng-submit="makeAssociation()">
+  <div class="form-group">
+    <label for="player">Player: </label>
+    <select ng-options="p.name for p in players" ng-model="selectedPlayer" class="form-control" name="player"></select>
+  </div>
+  <div class="form-group">
+    <label for="team">Team: </label>
+    <select ng-options="t.name for t in teams" ng-model="selectedTeam" class="form-control" name="team"></select>
+  </div>
+  <button type="submit" class="btn btn-primary">Assign Player to Team</button>
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <th>Name</th>
+    <th>Team</th>
+    <th>Actions </th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="p in players">
+      <td ng-bind="p.name "></td>
+      <td ng-bind="p.team.name "></td>
+      <td><button class="btn btn-danger" ng-click="bootOffTeam(p)">Kick Player off</button></td>
+    </tr>
+  </tbody>
+</table>

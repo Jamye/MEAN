@@ -1,0 +1,22 @@
+<h3>This is the Players Page</h3>
+
+<form ng-submit="addPlayer()">
+  <div class="form-group">
+    <label for="newplayer">Player Name: </label>
+    <input type="text" name="newplayer" ng-model="newPlayer.name" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Add new player</button>
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <th>Name</th>
+    <th>Actions </th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="p in players">
+      <td ng-bind="p.name "></td>
+      <td><button class="btn btn-danger" ng-click="deletePlayer(p)">Remove Player</button></td>
+    </tr>
+  </tbody>
+</table>
